@@ -38,3 +38,27 @@ def analyze_keywords():
     analysis_textbox.delete("1.0", tk.END)
     analysis_textbox.insert(tk.END, keyword_df.to_string(index=False))
 
+    app = tk.Tk()
+
+app.title("Resume and Job Listing Analyzer")
+app.geometry("600x600")
+
+tk.Label(app, text="Resume Text").grid(row=0, column=0, padx=10, pady=10)
+tk.Label(app, text="Job Listing Text").grid(row=0, column=1, padx=10, pady=10)
+
+resume_textbox = scrolledtext.ScrolledText(app, width=30, height=15)
+resume_textbox.grid(row=1, column=0, padx=10, pady=10)
+
+job_listing_textbox = scrolledtext.ScrolledText(app, width=30, height=15)
+job_listing_textbox.grid(row=1, column=1, padx=10, pady=10)
+
+generate_button = tk.Button(app, text="Generate Word Clouds", command=generate_wordclouds)
+generate_button.grid(row=2, column=0, columnspan=2, pady=10)
+
+analyze_button = tk.Button(app, text="Analyze Keywords", command=analyze_keywords)
+analyze_button.grid(row=3, column=0, columnspan=2, pady=10)
+
+analysis_textbox = scrolledtext.ScrolledText(app, width=70, height=10)
+analysis_textbox.grid(row=4, column=0, columnspan=2, padx=10, pady=10)
+
+app.mainloop()
