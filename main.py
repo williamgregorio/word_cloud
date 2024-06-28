@@ -38,8 +38,7 @@ def analyze_keywords():
     analysis_textbox.delete("1.0", tk.END)
     analysis_textbox.insert(tk.END, keyword_df.to_string(index=False))
 
-    app = tk.Tk()
-
+app = tk.Tk()
 app.title("Resume and Job Listing Analyzer")
 app.geometry("600x600")
 
