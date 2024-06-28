@@ -27,5 +27,14 @@ def generate_wordclouds():
 
     plt.show()
 
+def analyze_keywords():
+    job_listing_text = job_listing_textbox.get("1.0", tk.END)
+    words = re.findall(r'\b\w+\b', job_listing_text.lower())
+    keyword_counts = Counter(words)
+    
+    keyword_df = pd.DataFrame(keyword_counts.items(), columns=['Keyword', 'Count'])
+    keyword_df = keyword_df.sort_values(by='Count', ascending=False).reset_index(drop=True)
 
+    analysis_textbox.delete("1.0", tk.END)
+    analysis_textbox.insert(tk.END, keyword_df.to_string(index=False))
 
